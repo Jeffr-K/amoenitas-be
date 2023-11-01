@@ -1,4 +1,3 @@
 package com.annonymous.ttaleum.infrastructure.database;
 
-public class JpaQueryDSLConfig {
-}
+public class JpaQueryDSLConfig { }

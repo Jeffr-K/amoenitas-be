@@ -1,9 +1,6 @@
 package com.annonymous.ttaleum.modules.user.domain;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
@@ -12,8 +9,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class User {
   @Id
-  @GeneratedValue(strategy = GenerationType.AUTO)
-  private Long id;
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  public Long id;
 
-  private String name;
+  @Column
+  public String name;
 }
