@@ -23,6 +23,7 @@ public class ApplicationSecurityConfig {
           .requestMatchers( "/swagger-ui/**").permitAll()
           .requestMatchers( "/api-docs/**").permitAll()
           .requestMatchers("/actuator/**").permitAll()
+          .requestMatchers("/product/**").permitAll()
           .anyRequest().authenticated()
       );
 
