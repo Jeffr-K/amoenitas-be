@@ -1,6 +1,9 @@
 # Custom .gitignore
 # --------------------------------------
 .idea
+out
+/src/main/generated
+.deploy
 # --------------------------------------
 
 

@@ -1,4 +1,4 @@
-package com.annonymous.ttaleum.modules.user.domain;
+package com.annonymous.ttaleum.modules.user.domain.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
