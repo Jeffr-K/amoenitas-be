@@ -24,6 +24,7 @@ public class ApplicationSecurityConfig {
           .requestMatchers( "/api-docs/**").permitAll()
           .requestMatchers("/actuator/**").permitAll()
           .requestMatchers("/product/**").permitAll()
+                .requestMatchers("/exception/**").permitAll()
           .anyRequest().authenticated()
       );
 
