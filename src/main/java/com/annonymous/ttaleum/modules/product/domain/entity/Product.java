@@ -39,6 +39,7 @@ public class Product {
 
   @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
   public Collection<Photo> photos = new ArrayList<>();
+
   @ManyToOne
   public Category category;
 

@@ -15,4 +15,12 @@ public class CategoryUseCase {
     Category category = new Category(adapter.code, adapter.name);
     this.categoryRepository.save(category);
   }
+
+  public void delete() {}
+
+  public void getCategory() {}
+
+  public void getCategories() {}
+
+
 }
