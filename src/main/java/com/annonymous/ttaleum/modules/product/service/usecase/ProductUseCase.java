@@ -15,8 +15,8 @@ import java.util.Optional;
 public class ProductUseCase {
 
   private final ProductRepository productRepository;
-  private final CategoryRepository categoryRepository;
 
+  private final CategoryRepository categoryRepository;
 
   public void register(ProductRegisterAdapter adapter) {
     Optional<Category> category = this.categoryRepository.findById(Long.parseLong(adapter.categoryId));
