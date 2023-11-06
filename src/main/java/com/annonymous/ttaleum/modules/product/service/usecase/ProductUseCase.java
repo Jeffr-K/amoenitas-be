@@ -33,4 +33,8 @@ public class ProductUseCase {
 
     this.productRepository.save(product);
   }
+
+  public Optional<Product> findId(String product_id){
+    return this.productRepository.findById(Long.parseLong(product_id));
+  }
 }
