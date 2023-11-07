@@ -54,7 +54,9 @@ public class ProductController {
 
   }
   @PutMapping("/")
-  public void editProduct() {}
+  public void editProduct(adapter) {
+    this.productUseCase.edit(adapter)
+  }
 
   @DeleteMapping("/")
   public void deleteProduct() {}

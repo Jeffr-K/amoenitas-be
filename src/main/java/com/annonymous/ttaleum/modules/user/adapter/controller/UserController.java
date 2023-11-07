@@ -2,7 +2,7 @@ package com.annonymous.ttaleum.modules.user.adapter.controller;
 
 import com.annonymous.ttaleum.modules.user.adapter.adapter.UserRegistrationAdapter;
 import com.annonymous.ttaleum.modules.user.domain.entity.User;
-import com.annonymous.ttaleum.modules.user.service.UserRegisterUseCase;
+import com.annonymous.ttaleum.modules.user.domain.service.UserRegisterUseCase;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;

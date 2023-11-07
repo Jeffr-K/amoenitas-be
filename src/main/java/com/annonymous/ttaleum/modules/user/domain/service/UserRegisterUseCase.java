@@ -1,4 +1,4 @@
-package com.annonymous.ttaleum.modules.user.service;
+package com.annonymous.ttaleum.modules.user.domain.service;
 
 import com.annonymous.ttaleum.modules.user.domain.entity.User;
 import com.annonymous.ttaleum.modules.user.domain.repository.UserRepository;

@@ -43,3 +43,7 @@ management:
       exposure:
         include: health, info, metrics, prometheus
 
+jwt:
+  secret: asdasd
+  expirationHours: 3
+  issuer: ttaleum
