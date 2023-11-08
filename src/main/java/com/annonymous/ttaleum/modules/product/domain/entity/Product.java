@@ -1,10 +1,8 @@
 package com.annonymous.ttaleum.modules.product.domain.entity;
 
+import com.annonymous.ttaleum.modules.order.domain.entity.Order;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -34,11 +32,12 @@ public class Product {
   @Column(length = 50)
   public String thumbnail;
 
-//  @Column(length = 50)
-//  public String description;
 
   @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
   public Collection<Photo> photos = new ArrayList<>();
+
+  @ManyToOne
+  public Order order;
 
   @ManyToOne
   public Category category;
@@ -53,6 +52,5 @@ public class Product {
     this.thumbnail = thumbnail;
     this.category = category;
   }
-
 
 }
