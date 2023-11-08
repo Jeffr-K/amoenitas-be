@@ -1,6 +1,6 @@
 package com.annonymous.ttaleum.modules.user.domain.entity;
 
-import com.annonymous.ttaleum.modules.user.adapter.adapter.UserProfileUpdateAdapter;
+import com.annonymous.ttaleum.modules.order.domain.entity.Order;
 import com.annonymous.ttaleum.modules.user.adapter.adapter.UserRegistrationAdapter;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -8,6 +8,8 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
+
+import java.util.List;
 
 @Entity
 @Getter
@@ -25,8 +27,11 @@ public class User {
   @Column
   public String password;
 
-  @Column
+  @Column(unique = true)
   public String email;
+
+  @OneToMany
+  private List<Order> order;
 
   public User(String name, String password, String email) {
     this.name = name;
@@ -41,10 +46,6 @@ public class User {
       .password(encoder.encode(adapter.password))
       .build();
   }
-
-//  public void update(UserProfileUpdateAdapter adapter, PasswordEncoder encoder) {
-//
-//  }
 
 
 }

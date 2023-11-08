@@ -53,10 +53,6 @@ public class ProductController {
     return ResponseEntity.ok().body(map);
 
   }
-  @PutMapping("/")
-  public void editProduct(adapter) {
-    this.productUseCase.edit(adapter)
-  }
 
   @DeleteMapping("/")
   public void deleteProduct() {}

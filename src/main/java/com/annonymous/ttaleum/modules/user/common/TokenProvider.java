@@ -31,10 +31,10 @@ public class TokenProvider {
     this.issuer = issuer;
   }
 
-  public String generateAccessToken(String userSpecification) {
+  public String generateAccessToken(String payload) {
     return Jwts.builder()
       .signWith(new SecretKeySpec(secretKey.getBytes(), SignatureAlgorithm.HS512.getJcaName()))
-      .setSubject(userSpecification)
+      .setSubject(payload)
       .setIssuer(issuer)
       .setIssuedAt(Timestamp.valueOf(LocalDateTime.now()))
       .setExpiration(Date.from(Instant.now().plus(expirationHours, ChronoUnit.HOURS)))
