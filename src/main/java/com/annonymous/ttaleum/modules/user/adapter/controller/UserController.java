@@ -101,6 +101,9 @@ public class UserController {
 
     return ResponseEntity.ok().body(map);
   }
-
-
+  @GetMapping(path = "/user-list")
+  public ResponseEntity<List<User>> getUsers() {
+    List<User> users = this.userRegisterUseCase.getUsers();
+    return ResponseEntity.ok().body(users);
+  }
 }

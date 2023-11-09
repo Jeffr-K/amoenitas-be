@@ -1,9 +1,0 @@
-name: ttaleum-be
-app: java@17
-options:
-  ports: 8080
-context:
-  git:
-    url: https://github.com/viento-team/ttaleum-be.git
-    branch: master
-  preset: ttaleum-be
