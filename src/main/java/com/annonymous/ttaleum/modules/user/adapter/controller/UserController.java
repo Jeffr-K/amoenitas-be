@@ -84,7 +84,4 @@ public class UserController {
     List<User> users = this.userRegisterUseCase.getUsers();
     return ResponseEntity.ok().body(users);
   }
-
 }
-
-//public ResponseEntity<Optional<Product>> OneSelect() {}
