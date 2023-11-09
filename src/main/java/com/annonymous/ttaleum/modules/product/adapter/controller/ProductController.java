@@ -53,8 +53,6 @@ public class ProductController {
     return ResponseEntity.ok().body(map);
 
   }
-  @PutMapping("/")
-  public void editProduct() {}
 
   @DeleteMapping("/")
   public void deleteProduct() {}

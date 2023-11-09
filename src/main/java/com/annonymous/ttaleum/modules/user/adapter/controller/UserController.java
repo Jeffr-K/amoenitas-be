@@ -1,8 +1,9 @@
 package com.annonymous.ttaleum.modules.user.adapter.controller;
 
+import com.annonymous.ttaleum.infrastructure.security.annotation.MemberPassport;
 import com.annonymous.ttaleum.modules.user.adapter.adapter.UserRegistrationAdapter;
-import com.annonymous.ttaleum.modules.user.domain.entity.User;
-import com.annonymous.ttaleum.modules.user.service.UserRegisterUseCase;
+import com.annonymous.ttaleum.modules.user.domain.entity.Member;
+import com.annonymous.ttaleum.modules.user.domain.service.UserRegisterUseCase;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
@@ -10,6 +11,9 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,14 +21,16 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
+@Tag(name = "Member", description = "Member API")
+@Validated
 @RestController
 @RequestMapping("/user")
-@Validated
-@Tag(name = "Member", description = "Member API")
 @RequiredArgsConstructor
 public class UserController {
   private final UserRegisterUseCase userRegisterUseCase;
+//  private final UserRegisterService userRegisterService;
 
   @PostMapping("/creation")
   @Operation(summary = "유저 등록", description = "유저를 등록합니다.")
@@ -32,8 +38,8 @@ public class UserController {
     @ApiResponse(responseCode = "200", description = "성공"),
     @ApiResponse(responseCode = "404", description = "이미 회원가입한 유저 입니다."),
   })
-  public ResponseEntity<User> registerUser(@Valid @RequestBody UserRegistrationAdapter adapter) {
-    User user = this.userRegisterUseCase.register(adapter.toEntity());
+  public ResponseEntity<Member> registerUser(@Valid @RequestBody UserRegistrationAdapter adapter) {
+    Member user = this.userRegisterUseCase.register(adapter.toEntity());
 
     return ResponseEntity.ok().body(user);
   }
@@ -52,6 +58,23 @@ public class UserController {
     return ResponseEntity.ok().body("성공");
   }
 
+  @GetMapping(path = "/user-list")
+  @MemberPassport
+  public ResponseEntity<List<Member>> getUsers(@AuthenticationPrincipal User user) {
+    List<Member> users = this.userRegisterUseCase.getUsers();
+    return ResponseEntity.ok().body(users);
+  }
+
+  @GetMapping("/test")
+  @MemberPassport
+  public ResponseEntity<Member> getUserTest(@AuthenticationPrincipal User user) {
+    String email = user.getAuthorities().stream().toList().get(0).toString();
+    Member member = this.userRegisterUseCase.getUserByEmail(email)
+      .orElseThrow(() -> new IllegalArgumentException("유저가 존재하지 않습니다."));
+
+    return ResponseEntity.ok().body(member);
+  }
+
   @GetMapping(path = "/search")
   @Operation(summary = "유저 조회", description = "유저를 조회합니다.")
   @ApiResponses(value = {
@@ -61,7 +84,7 @@ public class UserController {
   public ResponseEntity<Map<String, String>> getUser(
     @Valid @RequestParam(name = "userId") String userId
   ) {
-    Optional<User> result = this.userRegisterUseCase.getUser(Long.parseLong(userId));
+    Optional<Member> result = this.userRegisterUseCase.getUser(Long.parseLong(userId));
 
     Map<String, String> map = new HashMap<>();
     if (result.isPresent()) {
@@ -78,13 +101,9 @@ public class UserController {
 
     return ResponseEntity.ok().body(map);
   }
-
   @GetMapping(path = "/user-list")
-  public ResponseEntity<List<User>> getUsers() {
-    List<User> users = this.userRegisterUseCase.getUsers();
+  public ResponseEntity<List<Member>> getUsers() {
+    List<Member> users = this.userRegisterUseCase.getUsers();
     return ResponseEntity.ok().body(users);
   }
-
 }
-
-//public ResponseEntity<Optional<Product>> OneSelect() {}

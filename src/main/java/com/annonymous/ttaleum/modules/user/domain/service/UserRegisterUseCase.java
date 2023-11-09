@@ -1,6 +1,6 @@
-package com.annonymous.ttaleum.modules.user.service;
+package com.annonymous.ttaleum.modules.user.domain.service;
 
-import com.annonymous.ttaleum.modules.user.domain.entity.User;
+import com.annonymous.ttaleum.modules.user.domain.entity.Member;
 import com.annonymous.ttaleum.modules.user.domain.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Sort;
@@ -16,8 +16,8 @@ public class UserRegisterUseCase {
   private final UserRepository userRepository;
   private final PasswordEncoder passwordEncoder;
 
-  public User register(User user) {
-    User member = new User(
+  public Member register(Member user) {
+    Member member = new Member(
       user.name,
       this.passwordEncoder.encode(user.password),
       user.email
@@ -32,11 +32,15 @@ public class UserRegisterUseCase {
     this.userRepository.deleteById(userId);
   }
 
-  public Optional<User> getUser(Long userId) {
+  public Optional<Member> getUser(Long userId) {
     return this.userRepository.findById(userId);
   }
 
-  public List<User> getUsers() {
+  public Optional<Member> getUserByEmail(String email) {
+    return this.userRepository.findByEmail(email);
+  }
+
+  public List<Member> getUsers() {
     return this.userRepository.findAll(Sort.by(Sort.Direction.DESC, "name"));
   }
 }
