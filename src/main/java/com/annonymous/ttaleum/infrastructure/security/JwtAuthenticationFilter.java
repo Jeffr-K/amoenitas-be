@@ -16,6 +16,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.web.authentication.WebAuthenticationDetails;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
@@ -59,6 +60,8 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
       .map(tokenProvider::validateAccessTokenAndGetSubject)
       .orElse("anonymous:anonymous")
       .split(":");
+
+
 
     return new User(split[0], "", List.of(new SimpleGrantedAuthority(split[1])));
   }

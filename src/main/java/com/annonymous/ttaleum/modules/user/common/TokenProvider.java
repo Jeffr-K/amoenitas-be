@@ -42,11 +42,15 @@ public class TokenProvider {
   }
 
   public String validateAccessTokenAndGetSubject(String token) {
-    return Jwts.parserBuilder()
+    String result = Jwts.parserBuilder()
       .setSigningKey(secretKey.getBytes())
       .build()
       .parseClaimsJws(token)
       .getBody()
       .getSubject();
+    System.out.println("================================================");
+    System.out.println("Token: " + result);
+    System.out.println("================================================");
+    return result;
   }
 }

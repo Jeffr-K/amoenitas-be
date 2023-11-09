@@ -16,7 +16,7 @@ import java.util.List;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class User {
+public class Member {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   public Long id;
@@ -33,14 +33,14 @@ public class User {
   @OneToMany
   private List<Order> order;
 
-  public User(String name, String password, String email) {
+  public Member(String name, String password, String email) {
     this.name = name;
     this.password = password;
     this.email = email;
   }
 
-  public static User from(UserRegistrationAdapter adapter, PasswordEncoder encoder) {
-    return User.builder()
+  public static Member from(UserRegistrationAdapter adapter, PasswordEncoder encoder) {
+    return Member.builder()
       .name(adapter.name)
       .email(adapter.email)
       .password(encoder.encode(adapter.password))

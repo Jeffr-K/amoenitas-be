@@ -1,9 +1,8 @@
 package com.annonymous.ttaleum.modules.user.adapter.adapter;
 
-import com.annonymous.ttaleum.modules.user.domain.entity.User;
+import com.annonymous.ttaleum.modules.user.domain.entity.Member;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Pattern;
 
 public class UserRegistrationAdapter {
   @NotBlank(message = "닉네임은 필수 입력 값 입니다.")
@@ -20,7 +19,7 @@ public class UserRegistrationAdapter {
   @NotBlank(message = "이메일은 필수 입력 값 입니다.")
   public String email;
 
-  public User toEntity() {
-    return new User(this.name, this.password, this.email);
+  public Member toEntity() {
+    return new Member(this.name, this.password, this.email);
   }
 }

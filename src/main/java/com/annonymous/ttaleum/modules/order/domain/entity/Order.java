@@ -1,7 +1,7 @@
 package com.annonymous.ttaleum.modules.order.domain.entity;
 
 import com.annonymous.ttaleum.modules.product.domain.entity.Product;
-import com.annonymous.ttaleum.modules.user.domain.entity.User;
+import com.annonymous.ttaleum.modules.user.domain.entity.Member;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
@@ -37,5 +37,5 @@ public class Order {
   private List<Product> products;
 
   @ManyToOne
-  private User orderer;
+  private Member orderer;
 }

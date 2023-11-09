@@ -1,7 +1,7 @@
 package com.annonymous.ttaleum.infrastructure.database.repositories;
 
 
-import com.annonymous.ttaleum.modules.user.domain.entity.User;
+import com.annonymous.ttaleum.modules.user.domain.entity.Member;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
 
@@ -13,7 +13,7 @@ public class CustomUserRepositoryImpl implements CustomUserRepository {
   private final JPAQueryFactory jpaQueryFactory;
 
   @Override
-  public List<User> getUsers() {
+  public List<Member> getUsers() {
     return null;
   }
 
