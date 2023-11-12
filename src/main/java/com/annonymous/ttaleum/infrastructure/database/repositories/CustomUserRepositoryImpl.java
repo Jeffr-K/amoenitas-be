@@ -1,7 +1,7 @@
 package com.annonymous.ttaleum.infrastructure.database.repositories;
 
 
-import com.annonymous.ttaleum.modules.user.domain.entity.Member;
+import com.annonymous.ttaleum.modules.member.domain.entity.Member;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
 
