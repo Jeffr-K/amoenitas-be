@@ -1,0 +1,58 @@
+version: "3"
+
+services:
+  app:
+    image: arm64v8/amazoncorretto:17-alpine-jdk
+    container_name: app
+    volumes:
+      - ./src:/app/src
+      - ./gradle:/app/gradle
+      - ./build.gradle:/app/build.gradle
+      - ./gradlew:/app/gradlew
+      - ./gradlew.bat:/app/gradlew.bat
+      - ./settings.gradle:/app/settings.gradle
+    working_dir: /app
+    command: [ "./gradlew", "bootrun" ]
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://db/monitoring
+      SPRING_DATASOURCE_USERNAME: "root"
+      SPRING_DATASOURCE_PASSWORD: "1234"
+    ports:
+      - "8080:8080"
+    restart: always
+    depends_on:
+      - db
+
+  db:
+    image: arm64v8/mysql
+    container_name: db
+    environment:
+      MYSQL_ROOT_PASSWORD: "1234"
+      MYSQL_DATABASE: "monitoring"
+    ports:
+      - "3307:3306"
+    restart: always
+
+  prometheus:
+    image: prom/prometheus:v2.37.6
+    container_name: prometheus
+    volumes:
+      - ./prometheus/config:/etc/prometheus
+      - ./prometheus/volume:/prometheus
+    ports:
+      - "9090:9090"
+    command:
+      - '--web.enable-lifecycle'
+      - '--config.file=/etc/prometheus/prometheus.yaml'
+      - '--web.console.libraries=/etc/prometheus/console_libraries'
+      - '--web.console.templates=/etc/prometheus/consoles'
+    restart: always
+
+  grafana:
+    image: grafana/grafana:9.4.7
+    container_name: grafana
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./grafana/volume:/var/lib/grafana
+    restart: always
