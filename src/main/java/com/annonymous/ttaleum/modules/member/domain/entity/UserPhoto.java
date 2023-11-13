@@ -15,7 +15,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class Photo extends JpaBaseEntity {
+public class UserPhoto extends JpaBaseEntity {
   @Column(nullable = false)
   private String url;
 
@@ -26,8 +26,8 @@ public class Photo extends JpaBaseEntity {
   @JoinColumn
   private Member member;
 
-  public static Photo from(String url, boolean represented) {
-    return Photo
+  public static UserPhoto from(String url, boolean represented) {
+    return UserPhoto
       .builder()
       .url(url)
       .represented(represented)

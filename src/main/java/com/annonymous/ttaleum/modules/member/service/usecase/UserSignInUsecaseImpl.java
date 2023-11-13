@@ -6,6 +6,7 @@ import com.annonymous.ttaleum.modules.member.service.port.MemberSignInUsecase;
 import com.annonymous.ttaleum.modules.member.utils.exception.exception.UserNotFoundException;
 import com.annonymous.ttaleum.modules.member.domain.entity.Member;
 import com.annonymous.ttaleum.modules.member.domain.repository.UserRepository;
+import com.annonymous.ttaleum.modules.member.utils.response.Result;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;

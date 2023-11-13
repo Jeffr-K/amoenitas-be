@@ -33,7 +33,7 @@ public class Member extends JpaBaseEntity {
   private List<Order> order;
 
   @OneToMany
-  private List<Photo> photos;
+  private List<UserPhoto> photos;
 
   public static Member from(String name, String nickName, String password, String email, Roles roles) {
     return Member.builder()

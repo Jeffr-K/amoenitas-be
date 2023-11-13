@@ -3,6 +3,7 @@ package com.annonymous.ttaleum.modules.member.adapter.controller;
 import com.annonymous.ttaleum.modules.member.adapter.adapter.UserSignInRequestAdapter;
 import com.annonymous.ttaleum.modules.member.adapter.adapter.UserSignInResponseAdapter;
 import com.annonymous.ttaleum.modules.member.service.port.MemberSignInUsecase;
+import com.annonymous.ttaleum.modules.member.utils.response.Result;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;

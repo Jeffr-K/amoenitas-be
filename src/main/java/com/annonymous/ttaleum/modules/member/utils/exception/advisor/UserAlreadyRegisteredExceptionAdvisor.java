@@ -1,6 +1,7 @@
 package com.annonymous.ttaleum.modules.member.utils.exception.advisor;
 
 import com.annonymous.ttaleum.modules.member.utils.exception.exception.UserAlreadyRegisteredException;
+import com.annonymous.ttaleum.modules.member.utils.response.Result;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ExceptionHandler;
