@@ -1,5 +1,7 @@
 package com.annonymous.ttaleum.infrastructure.security;
 
+import com.annonymous.ttaleum.modules.member.utils.filter.JwtAuthenticationExceptionFilter;
+import com.annonymous.ttaleum.modules.member.utils.filter.JwtAuthenticationFilter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -17,6 +19,7 @@ import org.springframework.security.web.authentication.www.BasicAuthenticationFi
 @RequiredArgsConstructor
 public class ApplicationSecurityConfig {
   private final JwtAuthenticationFilter jwtAuthenticationFilter;
+  private final JwtAuthenticationExceptionFilter jwtAuthenticationExceptionFilter;
 
   @Bean
   public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
@@ -37,7 +40,10 @@ public class ApplicationSecurityConfig {
 
       http.sessionManagement(sessionManagement ->
         sessionManagement.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
-      http.addFilterBefore(jwtAuthenticationFilter, BasicAuthenticationFilter.class);
+
+      http
+        .addFilterBefore(jwtAuthenticationExceptionFilter, BasicAuthenticationFilter.class)
+        .addFilterBefore(jwtAuthenticationFilter, BasicAuthenticationFilter.class);
 
       return http.build();
   }

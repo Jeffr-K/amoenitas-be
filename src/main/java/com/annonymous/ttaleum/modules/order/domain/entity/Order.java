@@ -1,7 +1,7 @@
 package com.annonymous.ttaleum.modules.order.domain.entity;
 
 import com.annonymous.ttaleum.modules.product.domain.entity.Product;
-import com.annonymous.ttaleum.modules.user.domain.entity.Member;
+import com.annonymous.ttaleum.modules.member.domain.entity.Member;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
