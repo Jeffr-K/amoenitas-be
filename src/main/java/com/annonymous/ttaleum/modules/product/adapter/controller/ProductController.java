@@ -1,8 +1,10 @@
 package com.annonymous.ttaleum.modules.product.adapter.controller;
 
+import com.annonymous.ttaleum.modules.member.utils.response.Result;
 import com.annonymous.ttaleum.modules.product.domain.entity.Category;
 import com.annonymous.ttaleum.modules.product.domain.entity.Product;
 import com.annonymous.ttaleum.modules.product.service.usecase.ProductUseCase;
+import io.swagger.v3.oas.annotations.Operation;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -57,5 +59,52 @@ public class ProductController {
   @DeleteMapping("/")
   public void deleteProduct() {}
 
+  @PostMapping("/")
+  @Operation(summary = "상품 상세 조회 이벤트 등록")
+  public Result<String> storeProductDetailSearchEvent() {}
+
+  @PostMapping("/")
+  public Result<String> registerProductPhoto() {}
+
+  @PutMapping
+  public Result<String> editProductPhoto() {}
+
+  @DeleteMapping
+  public Result<String> deleteProductPhoto() {}
+
+  @GetMapping
+  public Result<String> getProductPhoto() {}
+
+  @GetMapping
+  public Result<String> getProductPhotos() {}
+
+
+  @GetMapping()
+  @Operation(summary = "찜한 상품 보기")
+  public Result<String> getPickProduct() {}
+
+  @GetMapping()
+  @Operation(summary = "찜한 상품 보기 리스트 조회")
+  public Result<String> getPickProducts() {}
+
+  @PostMapping()
+  @Operation(summary = "상품 찜하기")
+  public Result<String> pickProduct() {}
+
+  @DeleteMapping()
+  @Operation(summary = "상품 찜하기 삭제")
+  public Result<String> unPickProduct() {}
+
+  @PostMapping()
+  @Operation(summary = "상품 북마크")
+  public Result<String> bookmarkProduct() {}
+
+  @DeleteMapping()
+  @Operation(summary = "상품 북마크 해제")
+  public Result<String> unBookmarkProduct() {}
+
+  @GetMapping
+  @Operation(summary = "북마크 된 상품 조회")
+  public Result<String> getBookmarkedProduct() {}
 
 }

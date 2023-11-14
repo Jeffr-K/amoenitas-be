@@ -20,11 +20,9 @@ public class UserSignInUsecaseImpl implements MemberSignInUsecase {
 
   @Override
   public Result<UserSignInResponseAdapter> signIn(String email, String password) {
-//    Member user = this.userRepository.findByEmail(email)
-//      .orElseThrow(IllegalArgumentException::new);
 
     Member user = this.userRepository.findByEmail(email)
-      .orElseThrow(() -> new UserNotFoundException(HttpStatus.NOT_FOUND, "유저가 존재하지 않았습니다."));
+      .orElseThrow(() -> new UserNotFoundException(HttpStatus.NOT_FOUND, "유저가 존재하지 않습니다."));
 
     String accessToken = this.tokenProvider.generateAccessToken(String.format("%s:%s", user.getId(), user.getEmail()));
 

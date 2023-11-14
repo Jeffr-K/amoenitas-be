@@ -7,6 +7,7 @@ import com.annonymous.ttaleum.modules.member.utils.exception.exception.UserNotFo
 import com.annonymous.ttaleum.modules.member.domain.entity.Member;
 import com.annonymous.ttaleum.modules.member.domain.service.adapter.UserRegisterUseCase;
 import com.annonymous.ttaleum.modules.member.service.port.MemberRegistrationUsecase;
+import com.annonymous.ttaleum.modules.member.utils.response.Result;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
@@ -106,4 +107,84 @@ public class UserController {
     return ResponseEntity.ok().body(map);
   }
 
+  @PostMapping("/address")
+  @Operation(summary = "배송지 추가", description = "배송지를 추가합니다.")
+  @ApiResponses(value = {
+    @ApiResponse(responseCode = "200", description = "성공"),
+    @ApiResponse(responseCode = "404", description = "실패"),
+  })
+  public Result<String> registerAddress() { return Result.success("asd", "asdasd"); }
+
+  @DeleteMapping("/address")
+  public Result<String> deleteAddress() { return Result.success("asd", "asdasd"); }
+
+  @GetMapping("/")
+  public Result<String> getAddress() { return Result.success("asd", "asdasd"); }
+
+  @GetMapping("/")
+  public Result<String> getAddresses() { return Result.success("asd", "asdasd"); }
+
+  @PutMapping("/")
+  public Result<String> editAddress() { return Result.success("asd", "asdasd"); }
+
+
+  @PatchMapping("/")
+  @Operation(summary = "닉네임 변경합니다.", description = "배송지를 추가합니다.")
+  @ApiResponses(value = {
+    @ApiResponse(responseCode = "200", description = "성공"),
+    @ApiResponse(responseCode = "404", description = "실패"),
+  })
+  public Result<String> editNickName() { return Result.success("asd", "asdasd"); }
+
+  @PatchMapping("/")
+  @Operation(summary = "자동 로그인", description = "")
+  public Result<String> loginAutomatically() { return Result.success("asd", "asdasd"); }
+
+  @PatchMapping("/")
+  @Operation(summary = "이메일 변경", description = "")
+  public Result<String> editEmail() { return Result.success("asd", "asdasd"); }
+
+  @PatchMapping("/")
+  @Operation(summary = "비밀번호 변경", description = "")
+  public Result<String> editPassword() { return Result.success("asd", "asdasd"); }
+
+  @GetMapping("/")
+  @Operation(summary = "아이디 찾기", description = "")
+  public Result<String> findMemberAccountId() { return Result.success("asd", "asdasd"); }
+
+  @GetMapping("/")
+  @Operation(summary = "비밀번호 찾기", description = "")
+  public Result<String> findMemberPassword() { return Result.success("asd", "asdasd"); }
+
+  @GetMapping("/profile")
+  @Operation(summary = "프로필 조회", description = "")
+  public Result<String> findProfile() { return Result.success("asd", "asdasd"); }
+
+  @PostMapping("/profile")
+  @Operation(summary = "프로필 사진 추가", description = "")
+  public Result<String> registerProfilePhoto() { return Result.success("asd", "asdasd"); }
+
+  @DeleteMapping("/profile")
+  @Operation(summary = "프로필 사진 삭제", description = "")
+  public Result<String> deleteProfilePhoto() { return Result.success("asd", "asdasd"); }
+
+  @GetMapping("/profile")
+  @Operation(summary = "프로필 사진 조회", description = "")
+  public Result<String> findProfilePhoto() { return Result.success("asd", "asdasd"); }
+
+  @PostMapping("/account/refund")
+  @Operation(summary = "환불 계좌 등록", description = "")
+  public Result<String> registerRefundBankAccount() { return Result.success("asd", "asdasd"); }
+
+  @DeleteMapping("/account/refund")
+  @Operation(summary = "환불 계좌 삭제", description = "")
+  public Result<String> deleteRefundBankAccount() { return Result.success("asd", "asdasd"); }
+
+  @PutMapping("/account/refund")
+  @Operation(summary = "환불 계좌 수정", description = "")
+  public Result<String> editRefundBankAccount() { return Result.success("asd", "asdasd"); }
+
+  @GetMapping("/account/refund")
+  @Operation(summary = "환불 계좌 조회", description = "")
+  public Result<String> getRefundBankAccount() { return Result.success("asdasd", "asdasd" ); }
 }
