@@ -17,20 +17,24 @@ public class CartController {
   @PostMapping
   @Operation(summary = "장바구니에 상품 추가")
   public Result<String> addToCart() {
-    return cartService.add();
+    return Result.success("asdsad", "asdasd");
   }
 
   @DeleteMapping
   @Operation(summary = "장바구니에 상품 삭제")
-  public Result<String> deleteFromCart() {}
+  public Result<String> deleteFromCart() {
+    return Result.success("asdsad", "asdasd");
+  }
 
   @PutMapping
   @Operation(summary = "장바구니에 상품 수정")
-  public Result<String> editCartByProduct() {}
+  public Result<String> editCartByProduct() {
+    return Result.success("asdsad", "asdasd");
+  }
 
-  // http://localhost:8080/cart/list?sortBy=?
-  // sortBy=[latest || low-price || high-price || default]1
   @GetMapping
   @Operation(summary = "장바구니에 상품 리스트 필터 별 조회")
-  public Result<String> getProductFromCartPerFilter() {}
+  public Result<String> getProductFromCartPerFilter() {
+    return Result.success("asdsad", "asdasd");
+  }
 }
