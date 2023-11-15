@@ -57,54 +57,87 @@ public class ProductController {
   }
 
   @DeleteMapping("/")
-  public void deleteProduct() {}
+  public Result<String> deleteProduct() {
+    return Result.success("", "");
+  }
 
   @PostMapping("/")
   @Operation(summary = "상품 상세 조회 이벤트 등록")
-  public Result<String> storeProductDetailSearchEvent() {}
+  public Result<String> storeProductDetailSearchEvent() {
+    return Result.success("", "");
+  }
 
   @PostMapping("/")
-  public Result<String> registerProductPhoto() {}
+  @Operation(summary = "", description = "")
+  public Result<String> registerProductPhoto() {
+    return Result.success("", "");
+  }
 
   @PutMapping
-  public Result<String> editProductPhoto() {}
+  @Operation(summary = "", description = "")
+  public Result<String> editProductPhoto() {
+    return Result.success("", "");
+  }
 
   @DeleteMapping
-  public Result<String> deleteProductPhoto() {}
+  @Operation(summary = "", description = "")
+  public Result<String> deleteProductPhoto() {
+    return Result.success("", "");
+  }
 
   @GetMapping
-  public Result<String> getProductPhoto() {}
+  @Operation(summary = "", description = "")
+  public Result<String> getProductPhoto() {
+    return Result.success("", "");
+  }
 
   @GetMapping
-  public Result<String> getProductPhotos() {}
+  @Operation(summary = "", description = "")
+  public Result<String> getProductPhotos() {
+    return Result.success("", "");
+  }
 
 
   @GetMapping()
   @Operation(summary = "찜한 상품 보기")
-  public Result<String> getPickProduct() {}
+  public Result<String> getPickProduct() {
+    return Result.success("", "");
+  }
 
   @GetMapping()
   @Operation(summary = "찜한 상품 보기 리스트 조회")
-  public Result<String> getPickProducts() {}
+  public Result<String> getPickProducts() {
+    return Result.success("", "");
+  }
 
   @PostMapping()
   @Operation(summary = "상품 찜하기")
-  public Result<String> pickProduct() {}
+  public Result<String> pickProduct() {
+    return Result.success("", "");
+  }
 
   @DeleteMapping()
   @Operation(summary = "상품 찜하기 삭제")
-  public Result<String> unPickProduct() {}
+  public Result<String> unPickProduct() {
+    return Result.success("", "");
+  }
 
   @PostMapping()
   @Operation(summary = "상품 북마크")
-  public Result<String> bookmarkProduct() {}
+  public Result<String> bookmarkProduct() {
+    return Result.success("", "");
+  }
 
   @DeleteMapping()
   @Operation(summary = "상품 북마크 해제")
-  public Result<String> unBookmarkProduct() {}
+  public Result<String> unBookmarkProduct() {
+    return Result.success("", "");
+  }
 
   @GetMapping
   @Operation(summary = "북마크 된 상품 조회")
-  public Result<String> getBookmarkedProduct() {}
+  public Result<String> getBookmarkedProduct() {
+    return Result.success("", "");
+  }
 
 }
