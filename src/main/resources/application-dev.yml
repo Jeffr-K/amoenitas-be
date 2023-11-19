@@ -1,9 +1,12 @@
+server:
+  port: 8080
+
 spring:
   datasource:
-    driver-class-name: org.mariadb.jdbc.Driver
-    url: jdbc:mariadb://${MARIA_DB_HOST}:${MARIA_DB_PORT}/${MARIA_DB_DBNAME}?useSSL=false&serverTimezone=Asia/Seoul&characterEncoding=UTF-8
-    username: ${MARIA_DB_USERNAME}
-    password: ${MARIA_DB_PASSWORD}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://t07cxyau6qg7o5nz.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/h9sd2steb3d5n9u5
+    username: zymxqxjb5hsopnf5
+    password: vjf6kfjv47xo381v
   jpa:
     open-in-view: true
     hibernate:
@@ -13,8 +16,35 @@ spring:
     show-sql: true
     properties:
       hibernate.format_sql: true
-      dialect: org.hibernate.dialect.MariaDB103Dialect
+      dialect: org.hibernate.dialect.MySQL8InnoDBDialect
 
 logging:
   level:
     org.hibernate.SQL: debug
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+    groups-order: DESC
+    operationsSorter: method
+    disable-swagger-default-url: true
+    display-request-duration: true
+  api-docs:
+    path: /api-docs
+  show-actuator: true
+  default-consumes-media-type: application/json
+  default-produces-media-type: application/json
+  paths-to-match:
+    - /user/**
+    - /auth/**
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, info, metrics, prometheus
+
+jwt:
+  secret-key: iqTypGxJXTLoAnDP0FsJUE0Ko/ArCPwpPCzjSULcYnCFrbIPWmFWvYtFyMcd1Q1HoSQLb16xRpassw62PUB1KPogVGYtPrwPvR/uPjxgUqTNIVgBWsGC99T7wBmdJhtyiejYeu4a/oF40cZYGfzpX+4QB0tzWyiB3y5mNEA58XZ9oximE6vd/NztvGLb+6eB+XsInuEbDky5pnlQoacJUEfoFvT08D//4pMe5Q==%
+  expirationHours: 3
+  issuer: ttaleum
